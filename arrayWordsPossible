@@ -1,0 +1,22 @@
+//get all pars posible from an array to a max length of X
+
+var characters = ['a', 'b', 'c', 'd', 'e', 'f']; 
+var maxLength = 6;
+var words = [];
+
+function recursionPair(characters){
+		for(var i=0; i<characters.length; i++){
+    		character = characters[i];
+    		words.push(character);
+    	for(var j=0; j<words.length; j++){
+      		var word= words[j];
+          var newWord = word+character;
+      		if(newWord.length <= maxLength){
+          	words.push(newWord);
+          }
+      }
+   }	
+};
+
+recursionPair(characters);
+console.log("words",words);

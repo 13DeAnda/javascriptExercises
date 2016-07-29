@@ -1,4 +1,4 @@
-//reverse a string
+//reverse a string O(n)
 
 var name = "maria";
 var reversed = "";

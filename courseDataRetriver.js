@@ -1,3 +1,4 @@
+
 /**
 On our site, students can enter the course information for the courses they are taking.
 The format is any combination of
@@ -43,75 +44,38 @@ Semester: Fall
 
 var studentCourses = {};
 
-var data = "MATH 123 2015 Spring";
-
-var semesterAbreviation = {
-      f: 'fall',
-      s: 'spring',
-      su: 'summer',
-      w: 'winter'    
-};
-
-function transformData(data){
-  var course = {};
-  var quarter;
-  course.Department = data[0];
-  course.courseNumber = data[1];
-  
-  if(Number(data[2]) !== NaN){
-      year = data[2];
-      quarter = data[3];
-    
-  }
-  else{
-     year= data[3];
-    quarter = data[2];
-  }
-  
-  if(quarter.length < 2){
-      course.quarter = semesterAbreviation[quarter];    
-      
-  }
-  else{
-    course.quarter = quarter;
-  }
-
-  if(String(
-  
-  return course;
-}
-
-
-function getData(string){
+var data = ["CS111 2016 Fall","CS-111 Fall 2016", "MATH 123 2015 Spring", "CS111 fall 14","CS111 F2014"];
+function getData(data){
   var retrivedData = [];
 
-  var value = "";
-  var pastValue = "";
-
-    for(int i =0; i < data.length; i++){
-    var character = data[i];
-    if(pastValue === " " || pastValue === "" || typeof pastValue !== character){
-
-      if(Number(value) !== NaN){
-        value = Number(value);
-      }
-      else{
-        value.toLowerCase;
-      }
-      retrivedData.push(value);
-      value = "";
+  var pastCharacter;
+  var word = "";
+	
+  _.forEach(data, function(character, index){
+		if(character === " " ){
+    		retrivedData.push(word);
+        word = "";
     }
-
-    value += character;
-    if(Number(value) !== NaN){
-      pastValue = character;
+    else if(index === data.length-1){
+    		word += character;
+    	  retrivedData.push(word);
+    }
+    else if(pastCharacter && typeof pastCharacter !== typeof character){
+    	if(Number(word) !== NaN){
+      	word = Number(word);    
+      }
+        retrivedData.push(word);
+        word = "";    
     }
     else{
-      pastValue = Number(character);
+    		word += character;
     }
-  }
-  
-  return retrivedData;
+
+    	console.log("number?", character,Number(character) === 'NaN');
+		pastCharacter = character;
+  });
+  console.log(retrivedData);
 }
 
-
+getData(data[0]);
+ 

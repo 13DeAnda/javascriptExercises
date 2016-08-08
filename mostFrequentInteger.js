@@ -6,9 +6,9 @@ var mostComonCount;
 var mostCommonNumber;
 
 _.forEach(numbers, function(number){
-	  numberMap[number] = numberMap[number]? ++numberMap[number] : 1;
+    numberMap[number] = numberMap[number]? ++numberMap[number] : 1;
     if(!mostComonCount || mostComonCount < numberMap[number]){
-  		  mostComonCount = numberMap[number];
+        mostComonCount = numberMap[number];
         mostCommonNumber = number;
     }
 });

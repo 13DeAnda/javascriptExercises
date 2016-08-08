@@ -3,12 +3,13 @@ var numbers = [4,64,45,34,12,9, 45, 67, 94];
 
 var min, max;
 
-	_.forEach(numbers,function(number){
-  		if(!min || min > number ){
-      		min = number
-      }
-      if(!max || max < number){
-      		max = number;
-      }
-  });
-  console.log ("the max diference", max-min);
+_.forEach(numbers,function(number){
+  if(!min || min > number ){
+      min = number
+   }
+   if(!max || max < number){
+      max = number;
+   }
+});
+
+console.log ("the max diference", max-min);

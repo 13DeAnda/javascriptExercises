@@ -8,7 +8,7 @@ var pattern = "acc";
 var dictionary = ["cdf", "too", "hgfdt" ,"paa"];
 
 function getMatch(pattern, dictionary){
-		var patternMap = getPattern(pattern);
+   var patternMap = getPattern(pattern);
     _.forEach(dictionary, function(word){
       if(word.length === pattern.length){
       	if(patternMap === getPattern(word)){

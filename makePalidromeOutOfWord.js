@@ -10,29 +10,30 @@ Note if there are multiple correct answers you only need to return 1 palindrome.
 */
 
 function getPalidrome(word){
-	var mapWords = {};
+  var mapWords = {};
   var first ="";
   var second = "";
   var single = null;
+  
   _.forEach(word, function(character){
-  	if(mapWords[character]){
-    	mapWords[character]++;
-      if(single === character){
-      	single = null;
-      }
-      if(mapWords[character] === 2){
-      	mapWords[character] = 0;
-        first += character;
-        second += character;
-      }
+   if(mapWords[character]){
+     mapWords[character]++;
+     if(single === character){
+       single = null;
+     }
+     if(mapWords[character] === 2){
+       mapWords[character] = 0;
+       first += character;
+       second += character;
+     }
     }
     else{
-    	mapWords[character] = 1;
+      mapWords[character] = 1;
       single = character;
     }
   });	
   if(single){
-  	console.log(first+single+second);
+    console.log(first+single+second);
   }
 };
 

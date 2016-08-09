@@ -13,23 +13,22 @@ HeWorM -> [HelloWorldMars]
 var wordsAvailable = ['HelloMars', 'HelloWorld', 'HelloWorldMars', 'HiHo'];
 
 function getPrediction(searchWord){
-	var predictions = [];
+  var predictions = [];
   
   _.forEach(wordsAvailable, function(word){
-		var wordArray = word.match(/([a-zA-Z][a-z]*)/g);
+    var wordArray = word.match(/([a-zA-Z][a-z]*)/g);
     var searchWordArray = searchWord.match(/([a-zA-Z][a-z]*)/g);
     var isMatch = true;
    
     for(var i = 0; i < searchWordArray.length; i++){
-    	if(wordArray[i] && searchWordArray[i] !== wordArray[i].slice(0, searchWordArray[i].length)){
+      if(wordArray[i] && searchWordArray[i] !== wordArray[i].slice(0, searchWordArray[i].length)){
       	isMatch = false;
         break;
       }
     }
     if(isMatch){
-    	predictions.push(word);
+      predictions.push(word);
     }
-
   });
   console.log("predictions", predictions);
 };

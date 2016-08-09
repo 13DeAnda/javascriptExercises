@@ -37,45 +37,43 @@ var studentCourses = {};
 var data = ["CS111 2016Fall","CS-111 Fall 2016", "MATH 123 2015 Spring", "CS111 fall 14","CS111 F2014"];
 
 function getCourse(data){
-	var course = {};
+  var course = {};
+  course.department = data[0];
+  course.number = Number(data[1]);
+  course.semester = isNaN(data[2])? data[2] : data[3];
+  var year = isNaN(data[2])? data[3] : data[2];
 	
-	  course.department = data[0];
-	  course.number = Number(data[1]);
-	
-	  course.semester = isNaN(data[2])? data[2] : data[3];
-	  var year = isNaN(data[2])? data[3] : data[2];
-	
-	if(year.length < 4){
-	  	year = "20" + year;
-	  }
-	
-	 course.year = Number(year);
-	
-	return course;
+  if(year.length < 4){
+    year = "20" + year;
+  }
+  course.year = Number(year);
+  
+  return course;
 };
 
 function getData(data){
-  	var retrivedData = [];
-  	var pastCharacter;
-  	var word = "";
+  var retrivedData = [];
+  var pastCharacter;
+  var word = "";
 	
-  	_.forEach(data, function(character, index){
-		if(character === " " || character === "-"){
-	    		retrivedData.push(word);
-	        	word = character;
-		}
-		else if(index === data.length-1){
-		    	word += character;
-		    	retrivedData.push(word);
-	        }
-		else if(word !== "" && isNaN(pastCharacter) !== isNaN(character)){
-		        retrivedData.push(word);
-		        word = character;    
-		}
-		else{
-		    	word += character;
-		}
-		pastCharacter = character;
+  _.forEach(data, function(character, index){
+    
+    if(character === " " || character === "-"){
+      retrivedData.push(word);
+      word = character;
+    }
+    else if(index === data.length-1){
+      word += character;
+      retrivedData.push(word);
+    }
+    else if(word !== "" && isNaN(pastCharacter) !== isNaN(character)){
+      retrivedData.push(word);
+      word = character;    
+    }
+    else{
+      word += character;
+    }
+    pastCharacter = character;
   });
   
   return retrivedData;
@@ -83,5 +81,4 @@ function getData(data){
 
 var dataArray = getData(data[0]);
 var course = getCourse(dataArray);
-
 console.log(dataArray, course);

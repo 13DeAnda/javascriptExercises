@@ -5,17 +5,20 @@ var maxLength = 6;
 var words = [];
 
 function recursionPair(characters){
-		for(var i=0; i<characters.length; i++){
-    		character = characters[i];
-    		words.push(character);
-    	for(var j=0; j<words.length; j++){
-      		var word= words[j];
-          var newWord = word+character;
-      		if(newWord.length <= maxLength){
-          	words.push(newWord);
-          }
+
+  for(var i=0; i<characters.length; i++){
+    character = characters[i];
+    words.push(character);
+    
+    for(var j=0; j<words.length; j++){
+      var word= words[j];
+      var newWord = word+character;
+      
+      if(newWord.length <= maxLength){
+        words.push(newWord);
       }
-   }	
+    }
+  }	
 };
 
 recursionPair(characters);

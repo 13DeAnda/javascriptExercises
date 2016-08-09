@@ -6,4 +6,4 @@ for(var i= name.length; i >0; i--){
   reversed += name[i-1];
 }
   
-  console.log("reversed string", reversed);
+console.log("reversed string", reversed);

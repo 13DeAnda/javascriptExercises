@@ -19,15 +19,16 @@ var pies =[{
 ];
 
 function pieDivide(pies, people){
-		_.forEach(pies, function(pie){
-    		var slicePerPerson = pie.slices/people;
-    		if(slicePerPerson >= 1){
-        	console.log(Math.floor(slicePerPerson), " slices of ", pie.name);
-        }
-        else{
-        	console.log("0 slices of ", pie.name);
-        }
-    });
+  _.forEach(pies, function(pie){
+    var slicePerPerson = pie.slices/people;
+    
+    if(slicePerPerson >= 1){
+      console.log(Math.floor(slicePerPerson), " slices of ", pie.name);
+    }
+    else{
+      console.log("0 slices of ", pie.name);
+    }
+  });
 };
 
 pieDivide(pies, 6);

@@ -10,17 +10,17 @@ var low = 4;
 var high = 69;
 
 function getSums(values, low, high){
-	var i, j;
+  var i, j;
   var sum = 0;
   
   for(var index = 0; index < values.length; index++){
-  	var value = values[index];
+    var value = values[index];
     sum += value;
-		if((i && j) && sum < high+1 && sum > low -1){
-    	console.log("i:", i, "j:", j, "sum:", sum);
+    if((i && j) && sum < high+1 && sum > low -1){
+      console.log("i:", i, "j:", j, "sum:", sum);
     }
     else if(i !== undefined & j){
-    	i = index;
+      i = index;
       j = false;
       sum = value;    	
     }
@@ -29,7 +29,7 @@ function getSums(values, low, high){
       sum = value;
     }
     else if( !j ){
-    	j = index;
+      j = index;
       if(sum < high+1 && sum > low-1){
       	 console.log("i:", i, "j:", j, "sum:", sum);
       }
@@ -37,6 +37,4 @@ function getSums(values, low, high){
   }
 };
 
-
 getSums(values, low, high);
-

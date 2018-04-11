@@ -1,5 +1,6 @@
 //get all pars posible from an array to a max length of X
 
+
 var characters = ['a', 'b', 'c', 'd', 'e', 'f']; 
 var maxLength = 6;
 var words = [];

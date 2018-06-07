@@ -14,7 +14,6 @@ function getCommonElements(array1, array2){
     var element2 = array2[j];
     if(commonElementsMap[element2] === 1){
       commonElements.push(element2);
-      commonElementsMap[element2] ++;
     }
   }
   console.log("the common elements", commonElements);

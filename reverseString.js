@@ -6,9 +6,9 @@
 // "Edabit is really helpful!" ➞ "!lufpleh yllaer si tibadE"
 
 function reverse(str) {
-	var reversed = "";
+  var reversed = "";
 
-	for(var i = str.length - 1; i > -1; i --){
+  for(var i = str.length - 1; i > -1; i --){
     reversed += str[i];
   }
   

@@ -21,10 +21,8 @@ function getPatternMap(string){
   return map;
 }
 
-function matchstr(string, pattern){
-  var patternMap = getPatternMap(pattern);
+function findMatch(string, patternMap){
   var i = 0;
-
   for(var pattern in patternMap){
     var foundPattern = 0;
     var noMoreMatches = false;
@@ -35,7 +33,6 @@ function matchstr(string, pattern){
       if(stringToCheck === pattern){
         i+= pattern.length;
         foundPattern++;
-        console.log(patternMap, stringToCheck, "matches");
       }
       else if(stringToCheck !== pattern && foundPattern > 0){
         noMoreMatches = true;
@@ -47,11 +44,25 @@ function matchstr(string, pattern){
   }
 
   if(i < string.length){
-    return false;
+    return i;
   }
   else{
     return true;
   }
 }
 
-console.log(matchstr("aab", "a(3)b(3)"));
+function matchstr(string, pattern){
+  var patternMap = getPatternMap(pattern);
+  var i = 0;
+  var result = string.length -1;
+
+  while (typeof result === 'number'){
+    var slice = string.slice(i, string.length);
+    result = findMatch(slice, patternMap);
+    i = result;
+  }
+
+  return result;
+}
+
+console.log(matchstr("aabc", "a(3)b(3)"));

@@ -37,23 +37,30 @@ function isEquals(element1, element2){
 var element1 = null;
 var element2 = null;
 
-// element1 = [1,2,4];
-// element2 = [1,4,4];
-// console.log('False', isEquals(element1, element2));
+element1 = [1,2,4];
+element2 = [1,4,4];
+console.log('False', isEquals(element1, element2));
 
-// element1 = [1,2,4];
-// element2 = [1,2,4];
-// console.log('True', isEquals(element1, element2));
+element1 = [1,2,4];
+element2 = [1,2,4];
+console.log('True', isEquals(element1, element2));
 
-// element1 = {"one": 1, "two": 2, "four": 4};
-// element2 = {"one": 1, "two": 2, "four": 4};
-// console.log('True', isEquals(element1, element2));
+element1 = {"one": 1, "two": 2, "four": 4};
+element2 = {"one": 1, "two": 2, "four": 4};
+console.log('True', isEquals(element1, element2));
 
-// element1 = {"kk": 1, "two": 2, "four": 4};
-// element2 = {"one": 1, "two": 2, "four": 4};
-// console.log('False', isEquals(element1, element2));
+element1 = {"kk": 1, "two": 2, "four": 4};
+element2 = {"one": 1, "two": 2, "four": 4};
+console.log('False', isEquals(element1, element2));
 
-// element1 = {"one": 1, "two": 6, "four": 4};
-// element2 = {"one": 1, "two": 2, "four": 4};
-// console.log('False', isEquals(element1, element2));
+element1 = {"one": 1, "two": 6, "four": 4};
+element2 = {"one": 1, "two": 2, "four": 4};
+console.log('False', isEquals(element1, element2));
 
+element1 = {"one": {"nest": 1}, "two": 6, "four": 4};
+element2 = {"one": {"nest": 2}, "two": 2, "four": 4};
+console.log('False', isEquals(element1, element2));
+
+element1 = {"one": {"nest": 1}, "two": 6, "four": 4};
+element2 = {"one": {"nest": 1}, "two": 6, "four": 4};
+console.log('True', isEquals(element1, element2));

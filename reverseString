@@ -1,9 +1,0 @@
-//reverse a string O(n)
-
-var name = "maria";
-var reversed = "";
-for(var i= name.length; i >0; i--){
-  reversed += name[i-1];
-}
-  
-console.log("reversed string", reversed);

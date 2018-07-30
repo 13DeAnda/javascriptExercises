@@ -21,14 +21,21 @@ function objectDiff(newCode, oldCode){
   var diff = [];
 
   for(var tag in newCode){
-    console.log("the tag", tag);
     if(oldCode[tag] && oldCode[tag] !== newCode[tag]){
       diff.push(['+', tag, newCode[tag]]);
     }
     else if (!oldCode[tag]){
-      diff.push()
+      diff.push(['+', tag, newCode[tag]]);
     }
   }
+  for(var tag in oldCode){
+    if(!newCode[tag]){
+      diff.push(['-', tag, oldCode[tag]]);
+    }
+  }
+
+  console.log(diff);
+  return diff;
 }
 
 objectDiff(newCode, oldCode);

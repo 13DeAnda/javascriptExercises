@@ -1,51 +1,44 @@
 //if a string given, check that all brackets have been closed properly
-/// if not propery closed send an error
-//ex: ()()[{()}]
+/// if not propery closed send an error: //ex: ()()[{()}]
 
 
 function checkProperlyClosed(string){
-  var openBracketMap = {
+  const openBracket = {
     '{' : '}',
     '[' : ']',
     '(' : ')'
   };
-  var closeBracketMap = {
+  const closeBracket = {
     '}' : '{',
     ']' : '[',
     ')' : '('
   };
-  var unclosedBrackets = [];
-
-  for(var i = 0; i < string.length; i++){
-    var character = string[i];
-
-    if(openBracketMap[character]){
-      unclosedBrackets.push(openBracketMap[character]);
+  var unclosed = [];
+  for (const char of string){
+    if(openBracket[char]){
+      //its an open bracket push to the queue
+      unclosed.push(char);
     }
-    else if(closeBracketMap[character]){
-      if(unclosedBrackets.length === 0 || unclosedBrackets[unclosedBrackets.length-1] !== character){
+    else if(unclosed.length && closeBracket[char]){
+      const lastElement = unclosed[unclosed.length -1];
+      if(closeBracket[char] !== lastElement){
         return false;
       }
       else{
-        unclosedBrackets.pop();
+        unclosed.pop();
       }
+    }   
+    else if(!unclosed.lenght && closeBracket[char]){
+      return false;
     }
-  }
-  if(unclosedBrackets.length > 0){
+  };
+  if(unclosed.length){
     return false;
   }
-
-  return true;
+  return true
 }
 
-var text1 ="()[some]{[54*(5)]}";
-console.log("True", checkProperlyClosed(text1));
-
-var text2 ="()[";
-console.log("False", checkProperlyClosed(text2));
-
-var text3 ="())";
-console.log("False", checkProperlyClosed(text3));
-
-var text4 ="())(";
-console.log("False", checkProperlyClosed(text3));
+console.log("True", checkProperlyClosed("()[some]{[54*(5)]}"));
+console.log("False", checkProperlyClosed("()["));
+console.log("False", checkProperlyClosed("())"));
+console.log("False", checkProperlyClosed("())("));

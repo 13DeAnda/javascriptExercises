@@ -1,31 +1,22 @@
 // given a pattern a.b.c. check if the keys from a json follow the pattern.
-//ex: a.b.c.
-
+//ex: a.b.c. should be good for situations stated on the test below the function
 
 function hasPropertyPattern(pattern, obj){
-  console.log(pattern, obj);
-  var patternExist = true;
   var patternLeft = pattern;
   for(var key in obj){
     var item = obj[key];
-
+    
     if(key === patternLeft[0]){
-      var patternLeftToValidate = patternLeft.slice(2, patternLeft.length);
+      var patternLeft = patternLeft.slice(2, patternLeft.length);
 
-      if(patternLeftToValidate.length === 0){
+      if(patternLeft.length === 0){
         return true;
       }
-
       if(typeof item === "object"){
-        var foundPattern = hasPropertyPattern(patternLeftToValidate, item);
-        if(foundPattern){
+        if(hasPropertyPattern(patternLeft, item)){
           return true;
         }
       }
-      patternLeft = patternLeftToValidate;
-    }
-    else{
-      patternLeft = pattern;
     }
   }
 
@@ -35,7 +26,10 @@ function hasPropertyPattern(pattern, obj){
 }
 
 
+// test values
+
 var pattern ="a.b.c";
+
 var valueOne = {
   a:{
     b: {
@@ -43,14 +37,14 @@ var valueOne = {
     }
   }
 };
-console.log("True", hasPropertyPattern(pattern, valueOne));
+console.log("valueOne: True", hasPropertyPattern(pattern, valueOne));
 
 var valueTwo = {
   a: "some",
   b: "true",
   c: "pattern"
 };
-console.log("True", hasPropertyPattern(pattern, valueTwo));
+console.log("ValueTwo: True", hasPropertyPattern(pattern, valueTwo));
 
 var valueThree = {
   a:{
@@ -59,7 +53,7 @@ var valueThree = {
     }
   }
 };
-console.log("False", hasPropertyPattern(pattern, valueThree));
+console.log("ValueThree: False", hasPropertyPattern(pattern, valueThree));
 
 var valueFour = {
   a:{
@@ -70,4 +64,4 @@ var valueFour = {
   b: "hello",
   c: "world"
 };
-console.log("True", hasPropertyPattern(pattern, valueFour));
+console.log("Value Four: True", hasPropertyPattern(pattern, valueFour));

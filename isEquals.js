@@ -2,7 +2,6 @@
 //implementation of lodash library isEquals
 //quals of arrays, objects, integers, strings.
 
-
 function isEquals(element1, element2){
   if(element1 === element2){
     return true;
@@ -21,46 +20,36 @@ function isEquals(element1, element2){
             return false;
           }
         }
-        else{
-          return false;
-        }
-
+        return false;
       }
       return result;
     }
+    else {
+      return false;
+    }
   }
-  else{
-    return false;
-  }
+  return false;
 }
 
-var element1 = null;
-var element2 = null;
+// integers
+var element1 = [1,2,4];
+var element2 = [1,3,4];
 
-element1 = [1,2,4];
-element2 = [1,4,4];
+console.log('True', isEquals(element1, element1));
 console.log('False', isEquals(element1, element2));
 
-element1 = [1,2,4];
-element2 = [1,2,4];
-console.log('True', isEquals(element1, element2));
 
+// simple json objects
 element1 = {"one": 1, "two": 2, "four": 4};
-element2 = {"one": 1, "two": 2, "four": 4};
-console.log('True', isEquals(element1, element2));
-
-element1 = {"kk": 1, "two": 2, "four": 4};
-element2 = {"one": 1, "two": 2, "four": 4};
+element2 = {"one": 1, "two": 3, "four": 4};
+element3 = {"one": 1, "two": 3};
+console.log('True', isEquals(element1, element1));
 console.log('False', isEquals(element1, element2));
+console.log('False', isEquals(element1, element3));
 
-element1 = {"one": 1, "two": 6, "four": 4};
-element2 = {"one": 1, "two": 2, "four": 4};
-console.log('False', isEquals(element1, element2));
+// nested json
 
 element1 = {"one": {"nest": 1}, "two": 6, "four": 4};
 element2 = {"one": {"nest": 2}, "two": 2, "four": 4};
 console.log('False', isEquals(element1, element2));
-
-element1 = {"one": {"nest": 1}, "two": 6, "four": 4};
-element2 = {"one": {"nest": 1}, "two": 6, "four": 4};
-console.log('True', isEquals(element1, element2));
+console.log('True', isEquals(element1, element1));
